@@ -11,8 +11,8 @@ class AchievementSerializer(serializers.ModelSerializer):
 
 
 class CatSerializer(serializers.ModelSerializer):
-    owner = serializers.StringRelatedField(read_only=True)
-    achievements = AchievementSerializer(read_only=True, many=True)
+    # owner = serializers.StringRelatedField(read_only=True)
+    achievements = AchievementSerializer(many=True) #, read_only=True)
 
     class Meta:
         model = Cat

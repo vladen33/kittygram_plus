@@ -1,8 +1,6 @@
 import datetime as dt
-from distutils.command.install import value
 
 import webcolors
-
 from rest_framework import serializers
 
 from .models import Cat, Owner, Achievement, AchievementCat, CHOICES
@@ -55,6 +53,14 @@ class CatSerializer(serializers.ModelSerializer):
                 achievement=current_achievement, cat=cat
             )
         return cat
+
+
+class CatListSerializer(serializers.ModelSerializer):
+    color = serializers.ChoiceField(choices=CHOICES)
+
+    class Meta:
+        model = Cat
+        fields = ('id', 'name', 'color')
 
 
 class OwnerSerializer(serializers.ModelSerializer):
